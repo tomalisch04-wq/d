@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Support Quiz</title><style>
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#0b1020,#1b2a4a);color:#fff}.wrap{max-width:900px;margin:40px auto;padding:30px;border-radius:20px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px)}.q{background:#ffffff10;padding:18px;border-radius:14px;margin:20px 0}.opt{display:block;padding:10px;margin:8px 0;background:#ffffff12;border-radius:10px}button{display:block;margin:30px auto;padding:14px 30px;border:0;border-radius:12px;background:#4ea1ff;color:#fff;font-size:18px}#r{text-align:center;font-size:22px}.good{color:#8df5a7}.bad{color:#ff8c8c}
+</style></head><body><div class='wrap'><h1>Coastline Customs – Staff & Customer Support Quiz</h1><form id=f></form><button onclick='g()' type='button'>Submit Quiz</button><div id=r></div></div><script>
+const qs=[
+["How many strikes lead to termination at Coastline Customs?",["1 Strike","2 Strikes","3 Strikes"],2],
+["What extra reward does the Designer of the Month receive?",["50 Robux","100 Robux","An exclusive rank without work"],1],
+["What is the first step for every trainee?",["Handle a ticket immediately","Watch the training video carefully","Call the CEO"],1],
+["Can a staff member have multiple positions (e.g. Support and Designer)?",["Yes","No"],0],
+["After how many days of absence must you submit an LOA?",["1 day","2 days","3 or more days"],2],
+["Where should questions about premade products be forwarded?",["Designers","COO and CEO","Community Outreach Team"],1],
+["What should you do if a customer reports a problem with an existing product?",["Ignore the ticket","Forward it to Management (@MGMT)","Tell them to buy a new one"],1],
+["Are the provided support text templates mandatory?",["No, they are optional but recommended","Yes, every message must match the template exactly"],0],
+["Which group must every employee join to receive payouts?",["Coastline Fans","Roblox group 'Toms-shop'"],1],
+["How should you communicate with customers?",["Short, no matter what","Always polite and professional"],1]
+];
+let f=document.getElementById('f');qs.forEach((q,i)=>{let d=document.createElement('div');d.className='q';d.innerHTML='<h3>'+(i+1)+'. '+q[0]+'</h3>';q[1].forEach((o,j)=>d.innerHTML+=`<label class=opt><input type=radio name=q${i} value=${j}> ${o}</label>`);f.appendChild(d);});
+function g(){let s=0;qs.forEach((q,i)=>{let a=document.querySelector('input[name=q'+i+']:checked');if(a&&+a.value===q[2])s++;});let p=Math.round(s/qs.length*100);r.innerHTML=`Score: ${s}/${qs.length} (${p}%)<br><span class="${p>=80?'good':'bad'}">${p>=80?'✅ PASS':'❌ FAILED - Please review the training.'}</span>`}
+</script></body></html>

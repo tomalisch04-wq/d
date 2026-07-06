@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coastline Customs Training Quiz</title><style>
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#0b1020,#1b2a4a);color:#fff} .wrap{max-width:900px;margin:40px auto;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);padding:30px;border-radius:20px;box-shadow:0 10px 40px #0006}.q{margin:24px 0;padding:18px;background:#ffffff10;border-radius:14px}h1{text-align:center}.opt{display:block;margin:8px 0;padding:10px;border-radius:10px;background:#ffffff12;cursor:pointer}.opt:hover{background:#ffffff22}button{display:block;margin:30px auto;padding:14px 30px;border:none;border-radius:12px;background:#4ea1ff;color:#fff;font-size:18px;cursor:pointer}#res{text-align:center;font-size:22px;font-weight:bold}
+.good{color:#7CFC98}.bad{color:#ff8080}
+</style></head><body><div class="wrap"><h1>Coastline Customs - Staff Training Quiz</h1><p>Pass score: <b>80%</b></p><form id=f></form><button onclick="grade()">Submit Quiz</button><div id=res></div></div><script>
+const qs=[
+["How many strikes result in termination? ",["1","2","3"],2],
+["What reward does the Designer of the Month receive?",["50 Robux","100 Robux","Exclusive rank"],1],
+["What is the first step for a trainee?",["Handle a ticket","Watch the training video","Call the CEO"],1],
+["Can a staff member hold multiple positions?",["Yes","No"],0],
+["When must a Leave of Absence be submitted?",["1 day","2 days","3 or more days"],2],
+["Where can designers find completed customer orders?",["General Chat","#new-orders","Email"],1],
+["How is an order transferred to the customer ticket?",["Copy & Paste","Discord Forward feature","Screenshot"],1],
+["How much can a Junior Designer earn?",["50%","70%","Up to 75%"],2],
+["Before sending a product to the customer, it must...",["Be sent immediately","Be approved in #quality-control","Be posted on Twitter"],1],
+["Can designers sell Coastline Customs products elsewhere?",["Yes","No"],1]
+];
+const f=document.getElementById('f');
+qs.forEach((q,i)=>{let d=document.createElement('div');d.className='q';d.innerHTML='<h3>'+(i+1)+'. '+q[0]+'</h3>';q[1].forEach((o,j)=>d.innerHTML+=`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${o}</label>`);f.appendChild(d);});
+function grade(){let s=0;qs.forEach((q,i)=>{let a=document.querySelector('input[name=q'+i+']:checked');if(a&&+a.value===q[2])s++;});let p=Math.round(s/qs.length*100);res.innerHTML=`Score: ${s}/${qs.length} (${p}%)<br><span class="${p>=80?'good':'bad'}">${p>=80?'✅ PASS - Welcome to Coastline Customs!':'❌ FAILED - Please review the training video and try again.'}</span>`;}
+</script></body></html>
